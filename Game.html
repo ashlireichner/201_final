@@ -71,7 +71,9 @@
 </head>
 <body>
 
-  <h1>< Travel Destination Guessing Game <</h1>
+  <h1><
+ Travel Destination Guessing Game <
+</h1>
 
   <div class="game-section">
     <div class="riddle" id="riddle">Click "New Riddle" to start the game!</div>
@@ -91,7 +93,7 @@
         answer: "New York City"
       },
       {
-        question: "I have a wall that stretches far and wide, a dragons home from ancient times. Where am I?",
+        question: "I have a wall that stretches far and wide, a dragon's home from ancient times. Where am I?",
         answer: "China"
       },
       {
@@ -130,7 +132,7 @@
 
       if (userAnswer === correctAnswer) {
         feedback.style.color = 'green';
-        feedback.textContent = "<‰ Correct! Great job!";
+        feedback.textContent = "Correct! Great job!";
       } else {
         feedback.style.color = 'red';
         feedback.textContent = `L Oops! The correct answer was: ${currentRiddle.answer}`;
