@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><8 Travel Destination Guessing Game <8</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: #4a0033;
+      text-align: center;
+      padding: 2em;
+    }
+    h1 {
+      color: #ff69b4;
+      font-size: 2.5em;
+    }
+    .game-section {
+      background: #fff0f5;
+      border: 2px solid #ff69b4;
+      border-radius: 15px;
+      padding: 2em;
+      max-width: 600px;
+      margin: 2em auto;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+    }
+    .riddle {
+      font-size: 1.2em;
+      margin-bottom: 1em;
+    }
+    input[type="text"] {
+      padding: 0.5em;
+      font-size: 1em;
+      width: 80%;
+      border: 2px solid #ff69b4;
+      border-radius: 5px;
+      margin-bottom: 1em;
+    }
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 0.75em 1.5em;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0.5em;
+    }
+    button:hover {
+      background-color: #ff1493;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-top: 1em;
+      font-size: 1.1em;
+    }
+    .home-button {
+      display: inline-block;
+      margin-top: 2em;
+      text-decoration: none;
+      background-color: #ff69b4;
+      color: white;
+      padding: 0.75em 1.5em;
+      border-radius: 5px;
+    }
+    .home-button:hover {
+      background-color: #ff1493;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>< Travel Destination Guessing Game <</h1>
+
+  <div class="game-section">
+    <div class="riddle" id="riddle">Click "New Riddle" to start the game!</div>
+    <input type="text" id="answerInput" placeholder="Your guess here..." />
+    <br/>
+    <button onclick="checkAnswer()">Submit</button>
+    <button onclick="newRiddle()">New Riddle</button>
+    <div class="feedback" id="feedback"></div>
+  </div>
+
+  <a href="index.html" class="home-button">Home</a>
+
+  <script>
+    const riddles = [
+      {
+        question: "I'm a city that never sleeps, with bright lights and towering dreams. Where am I?",
+        answer: "New York City"
+      },
+      {
+        question: "I have a wall that stretches far and wide, a dragons home from ancient times. Where am I?",
+        answer: "China"
+      },
+      {
+        question: "I'm famous for my gondolas and canals, a city that seems to float. Where am I?",
+        answer: "Venice"
+      },
+      {
+        question: "I'm a land of tulips and windmills, where wooden shoes might be in fashion. Where am I?",
+        answer: "The Netherlands"
+      },
+      {
+        question: "I'm a city where love locks hang, and a famous tower helps set the romance. Where am I?",
+        answer: "Paris"
+      }
+    ];
+
+    let currentRiddle = {};
+
+    function newRiddle() {
+      const randomIndex = Math.floor(Math.random() * riddles.length);
+      currentRiddle = riddles[randomIndex];
+      document.getElementById('riddle').textContent = currentRiddle.question;
+      document.getElementById('feedback').textContent = '';
+      document.getElementById('answerInput').value = '';
+    }
+
+    function checkAnswer() {
+      const userAnswer = document.getElementById('answerInput').value.trim().toLowerCase();
+      const correctAnswer = currentRiddle.answer.toLowerCase();
+      const feedback = document.getElementById('feedback');
+
+      if (!currentRiddle.question) {
+        feedback.textContent = "Please click 'New Riddle' to start the game.";
+        return;
+      }
+
+      if (userAnswer === correctAnswer) {
+        feedback.style.color = 'green';
+        feedback.textContent = "<‰ Correct! Great job!";
+      } else {
+        feedback.style.color = 'red';
+        feedback.textContent = `L Oops! The correct answer was: ${currentRiddle.answer}`;
+      }
+    }
+  </script>
+
+</body>
+</html>
